@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de la Farmacia</title>
+    <style>
+        /* Estilo general para la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        #farmacia { 
+            display: flex;
+            justify-content: space-around;
+            align-content: space-around;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: stretch;
+            margin-top: 400px;
+            font-size: 100px;
+        }
+
+        /* Ventana flotante para el chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .chatbot-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-top: 10px;
+            padding-right: 10px;
+        }
+
+        .chatbot-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        #symptom {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2#respuesta {
+            font-size: 14px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Estilo para el input */
+        input[type="text"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="farmacia">FARMACIA</h1>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h1>MedBoy</h1>
+            <p>Asistente Virtual</p>
+        </div>
+
+        <div class="chatbot-body">
+            <p>¿Cuál de los siguientes síntomas tienes?</p>
+            <ul>
+                <li>Dolor de cabeza</li>
+                <li>Dolor de estómago</li>
+                <li>Náuseas</li>
+                <li>Fiebre</li>
+                <li>Tos</li>
+                <li>Dolor muscular</li>
+                <li>Fatiga</li>
+                <li>Dolor de garganta</li>
+            </ul>
+        </div>
+
+        <div class="chatbot-footer">
+            <form id="sintomasForm">
+                <input type="text" id="symptom" placeholder="Describe tu síntoma..." required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <h2 id="respuesta"></h2>
+    </div>
+
+    <script>
+        // Lista de síntomas comunes
+        const sintomasComunes = [
+            "dolor de cabeza", "dolor de estómago", "fiebre", "tos", "dolor muscular", "náuseas", "fatiga", "dolor de garganta"
+        ];
+    
+        // Recomendaciones para cada síntoma
+        const recomendaciones = {
+            "dolor de cabeza": "Te recomiendo descansar y tomar suficiente agua. Si persiste, puedes considerar analgésicos, pero asegúrate de no tener alergia a estos medicamentos.",
+            "dolor de estómago": "Puedes intentar tomar un antiácido o descansar. Si el dolor persiste, es importante que consultes a un médico.",
+            "fiebre": "Es importante que tomes líquidos y descanses. Puedes considerar medicamentos como paracetamol si no eres alérgico.",
+            "tos": "Para la tos, se pueden usar jarabes expectorantes. Si es persistente, consulta a un médico.",
+            "dolor muscular": "El dolor muscular puede aliviarse con descanso, calor local o analgésicos. Asegúrate de no tener alergias a estos medicamentos.",
+            "náuseas": "Las náuseas pueden aliviarse con medicamentos antieméticos. Consulta a un médico si persisten.",
+            "fatiga": "La fatiga puede estar relacionada con falta de descanso. Si persiste, consulta a un médico.",
+            "dolor de garganta": "Puedes aliviar el dolor de garganta con gárgaras de agua tibia con sal y pastillas para la garganta."
+        };
+    
+        // Función para normalizar texto (eliminar acentos y convertir a minúsculas)
+        function normalizarTexto(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+    
+        document.getElementById('sintomasForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evitar el envío tradicional del formulario
+    
+            // Obtener la entrada del usuario y normalizarla
+            const entrada = normalizarTexto(document.getElementById('symptom').value);
+    
+            let respuesta = "Lo siento, no pude detectar síntomas comunes en tu mensaje. ¿Podrías describir tus síntomas de manera más clara?";
+    
+            // Comparar la entrada con los síntomas comunes normalizados
+            for (let sintoma of sintomasComunes) {
+                if (entrada.includes(normalizarTexto(sintoma))) {
+                    respuesta = recomendaciones[sintoma] || "Lo siento, no puedo ofrecerte una recomendación para este síntoma.";
+                    break;
+                }
+            }
+    
+            // Mostrar la respuesta
+            document.getElementById('respuesta').textContent = respuesta;
+        });
+    </script>    
+</body>
+</html>
