@@ -103,6 +103,8 @@ const recomendaciones = {
         { nombre: "Té de jengibre", efectos: "Puede causar irritación gástrica", precio: "COP 1,000" },
         { nombre: "Clorfenamina", efectos: "Puede causar somnolencia", precio: "COP 2,200" }
     ]
+};
+
 // Función para normalizar texto
 function normalizarTexto(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -115,11 +117,12 @@ document.getElementById('sintomasForm').addEventListener('submit', function(even
     const entrada = normalizarTexto(document.getElementById('symptom').value);
     const sintomasValidos = Object.keys(medicamentos);
 
-    let sintomaValido = sintomasValidos.find(sintoma => entrada.includes(sintoma));
+    // Verificar si el síntoma ingresado está en la lista de síntomas válidos
+    let sintomaValido = sintomasValidos.find(sintoma => entrada.includes(normalizarTexto(sintoma)));
     if (sintomaValido) {
         mostrarMedicamentos(sintomaValido);
     } else {
-        document.getElementById('respuesta').textContent = "No reconocí el síntoma.";
+        document.getElementById('respuesta').textContent = "No reconocí el síntoma. Por favor, intenta de nuevo.";
     }
 });
 
