@@ -27,26 +27,23 @@
                 <li>Dolor de garganta</li>
             </ul>
         </div>
-
         <div class="chatbot-footer">
             <form id="sintomasForm">
                 <input type="text" id="symptom" placeholder="Describe tu síntoma..." required>
                 <button type="submit">Enviar</button>
             </form>
         </div>
-
         <h2 id="respuesta"></h2>
-
-        <!-- Formulario para ingresar la dirección del domicilio -->
         <div id="domicilioForm" style="display: none;">
             <h3>¿Te gustaría hacer un pedido a domicilio?</h3>
             <form id="pedidoForm">
                 <input type="text" id="direccion" placeholder="Ingresa tu dirección..." required>
+                <input type="text" id="medicamento" placeholder="¿Cuál medicamento deseas?" required>
+                <input type="text" id="cantidad" placeholder="Cantidad..." required>
                 <button type="submit">Confirmar Domicilio</button>
             </form>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
