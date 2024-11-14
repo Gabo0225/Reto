@@ -38,4 +38,8 @@ document.getElementById('sintomasForm').addEventListener('submit', function(even
 
     // Mostrar la respuesta
     document.getElementById('respuesta').textContent = respuesta;
+
+    // Mostrar el formulario de domicilio sin importar el síntoma
+    document.getElementById('domicilioForm').style.display = "block";
 });
+    
