@@ -1,4 +1,4 @@
-
+/* Estilo para la página */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,16 +12,16 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    font-size: 5vw;  
+    font-size: 5vw;  /* Usar un tamaño de fuente relativo */
 }
 
-
+/* Ventana flotante para el chatbot */
 .chatbot-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 90%; 
-    max-width: 350px; 
+    width: 90%; /* Hacer que ocupe el 90% del ancho en dispositivos pequeños */
+    max-width: 350px; /* Limitar el tamaño máximo */
     height: 500px;
     background-color: white;
     border: 2px solid #007bff;
@@ -30,9 +30,12 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box; /* Para que el padding no afecte el ancho */
+    margin-left: auto; /* Centra el chatbot a la derecha */
+    margin-right: auto; /* Centra el chatbot a la izquierda */
 }
 
-
+/* Encabezado del chatbot */
 .chatbot-header {
     background-color: #007bff;
     color: white;
@@ -42,7 +45,7 @@ body {
     text-align: center;
 }
 
-
+/* Cuerpo del chatbot */
 .chatbot-body {
     flex-grow: 1;
     overflow-y: auto;
@@ -82,7 +85,7 @@ h2#respuesta {
     margin-top: 20px;
 }
 
-
+/* Estilo para el formulario de domicilio */
 #domicilioForm {
     margin-top: 20px;
 }
@@ -94,12 +97,14 @@ h2#respuesta {
     border: 1px solid #ccc;
 }
 
-
+/* Estilos responsivos */
 @media (max-width: 768px) {
     .chatbot-container {
-        width: 95%;
+        width: 95%; /* Reducir el ancho a un 95% en dispositivos pequeños */
         max-width: 100%;
-        height: 450px; 
+        height: 450px; /* Reducir la altura en dispositivos más pequeños */
+        margin-left: 10px; /* Agregar margen izquierdo */
+        margin-right: 10px; /* Agregar margen derecho */
     }
 
     .chatbot-header h1 {
@@ -107,7 +112,7 @@ h2#respuesta {
     }
 
     #symptom, #medicamento, #direccion, #cantidad {
-        font-size: 14px; 
+        font-size: 14px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
     }
 
     button {
@@ -115,19 +120,21 @@ h2#respuesta {
     }
 
     h2#respuesta {
-        font-size: 12px; 
+        font-size: 12px; /* Reducir tamaño de texto para mensajes */
     }
 }
 
-
+/* Estilos para pantallas muy pequeñas (teléfonos móviles) */
 @media (max-width: 480px) {
     .Far {
-        font-size: 7vw;  
+        font-size: 7vw;  /* Reducir más el tamaño de la fuente para teléfonos */
     }
 
     .chatbot-container {
         width: 100%;
-        height: 400px; 
+        height: 400px; /* Ajustar la altura para pantallas pequeñas */
+        margin-left: 10px; /* Agregar margen izquierdo */
+        margin-right: 10px; /* Agregar margen derecho */
     }
 
     .chatbot-header {
@@ -135,12 +142,12 @@ h2#respuesta {
     }
 
     #symptom, #medicamento, #direccion, #cantidad {
-        font-size: 12px; 
+        font-size: 12px; /* Asegurarse de que los campos de texto no sean demasiado grandes */
     }
 
     button {
         padding: 6px 10px;
-        font-size: 12px; 
+        font-size: 12px; /* Reducir el tamaño del botón */
     }
 
     h2#respuesta {
