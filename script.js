@@ -103,7 +103,7 @@ const recomendaciones = {
         { nombre: "Té de jengibre", efectos: "Puede causar irritación gástrica", precio: "COP 1,000" },
         { nombre: "Clorfenamina", efectos: "Puede causar somnolencia", precio: "COP 2,200" }
     ]
-};
+    };
 
 // Función para normalizar texto
 function normalizarTexto(texto) {
@@ -120,9 +120,11 @@ document.getElementById('sintomasForm').addEventListener('submit', function(even
     // Verificar si el síntoma ingresado está en la lista de síntomas válidos
     let sintomaValido = sintomasValidos.find(sintoma => entrada.includes(normalizarTexto(sintoma)));
     if (sintomaValido) {
+        console.log("Síntoma reconocido:", sintomaValido);  // Mensaje de depuración
         mostrarMedicamentos(sintomaValido);
     } else {
         document.getElementById('respuesta').textContent = "No reconocí el síntoma. Por favor, intenta de nuevo.";
+        console.log("Síntoma no reconocido:", entrada);  // Mensaje de depuración
     }
 });
 
@@ -142,7 +144,9 @@ function mostrarMedicamentos(sintoma) {
         lista.appendChild(item);
     });
 
+    // Asegurarse de mostrar la sección de selección de medicamentos
     document.getElementById('medicamentosSeleccion').style.display = "block";
+    console.log("Medicamentos mostrados para el síntoma:", sintoma);  // Mensaje de depuración
 }
 
 // Seleccionar un medicamento y confirmar la compra
@@ -150,12 +154,14 @@ function seleccionarMedicamento(sintoma, index) {
     const medicamento = medicamentos[sintoma][index];
     document.getElementById('medicamentoSeleccionado').value = medicamento.nombre;
     document.getElementById('confirmarMedicamento').style.display = "inline-block";
+    console.log("Medicamento seleccionado:", medicamento.nombre);  // Mensaje de depuración
 }
 
 // Confirmar el medicamento y pasar al formulario de domicilio
 document.getElementById('confirmarMedicamento').addEventListener('click', function() {
     document.getElementById('medicamentosSeleccion').style.display = "none";
     document.getElementById('domicilioForm').style.display = "block";
+    console.log("Formulario de domicilio mostrado");  // Mensaje de depuración
 });
 
 // Manejar el formulario de domicilio
@@ -171,8 +177,10 @@ document.getElementById('pedidoForm').addEventListener('submit', function(event)
         document.getElementById('respuesta').textContent = `Pedido confirmado: ${medicamento}, Cantidad: ${cantidad}. Entrega en: ${direccion}. Contacto: ${numeroContacto}.`;
         document.getElementById('domicilioForm').style.display = "none";
         document.getElementById('volverAlInicio').style.display = "block";
+        console.log("Pedido confirmado");  // Mensaje de depuración
     } else {
         document.getElementById('respuesta').textContent = "Por favor, completa todos los campos.";
+        console.log("Campos incompletos en el formulario de domicilio");  // Mensaje de depuración
     }
 });
 
@@ -184,4 +192,5 @@ document.getElementById('nuevoPedido').addEventListener('click', function() {
     document.getElementById('medicamentosSeleccion').style.display = "none";
     document.getElementById('domicilioForm').style.display = "none";
     document.getElementById('volverAlInicio').style.display = "none";
+    console.log("Formulario reiniciado");  // Mensaje de depuración
 });
