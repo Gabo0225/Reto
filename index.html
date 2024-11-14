@@ -33,16 +33,28 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
+        
+        <!-- Sección de respuesta y selección de medicamentos -->
         <h2 id="respuesta"></h2>
+        <div id="medicamentosSeleccion" style="display: none;">
+            <h3>Selecciona un medicamento:</h3>
+            <div id="listaMedicamentos"></div>
+            <button id="confirmarMedicamento" style="display: none;">Comprar</button>
+        </div>
+
+        <!-- Formulario de domicilio -->
         <div id="domicilioForm" style="display: none;">
             <h3>¿Te gustaría hacer un pedido a domicilio?</h3>
             <form id="pedidoForm">
                 <input type="text" id="direccion" placeholder="Ingresa tu dirección..." required>
-                <input type="text" id="medicamento" placeholder="¿Cuál medicamento deseas?" required>
+                <input type="text" id="medicamentoSeleccionado" placeholder="Medicamento seleccionado" readonly required>
                 <input type="text" id="cantidad" placeholder="Cantidad..." required>
+                <input type="text" id="numeroContacto" placeholder="Número de contacto..." required>
                 <button type="submit">Confirmar Domicilio</button>
             </form>
         </div> 
+
+        <!-- Botón para volver al inicio -->
         <div id="volverAlInicio" style="display: none;">
             <button id="nuevoPedido">Inicio</button>
         </div>
