@@ -7,21 +7,22 @@ body {
     background-color: #f4f4f9;
 }
 
+/* Estilo del título */
 .Far {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    font-size: 5vw;  /* Usar un tamaño de fuente relativo */
+    font-size: 5vw;
 }
 
 /* Ventana flotante para el chatbot */
 .chatbot-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 90%; /* Hacer que ocupe el 90% del ancho en dispositivos pequeños */
-    max-width: 350px; /* Limitar el tamaño máximo */
+    bottom: 20px; /* Mantenerlo pegado al fondo */
+    right: 20px;  /* Pegado a la derecha */
+    width: 90%;   /* Ocupa el 90% del ancho en pantallas pequeñas */
+    max-width: 350px; /* Limita el tamaño máximo en pantallas grandes */
     height: 500px;
     background-color: white;
     border: 2px solid #007bff;
@@ -30,9 +31,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box; /* Para que el padding no afecte el ancho */
-    margin-left: auto; /* Centra el chatbot a la derecha */
-    margin-right: auto; /* Centra el chatbot a la izquierda */
+    box-sizing: border-box; /* Para asegurar que el padding no afecte el tamaño total */
 }
 
 /* Encabezado del chatbot */
@@ -53,6 +52,7 @@ body {
     padding-right: 10px;
 }
 
+/* Pie del chatbot */
 .chatbot-footer {
     display: flex;
     justify-content: space-between;
@@ -100,9 +100,9 @@ h2#respuesta {
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .chatbot-container {
-        width: 95%; /* Reducir el ancho a un 95% en dispositivos pequeños */
+        width: 90%; /* 90% de ancho en dispositivos pequeños */
         max-width: 100%;
-        height: 450px; /* Reducir la altura en dispositivos más pequeños */
+        height: 450px; /* Reducir la altura en dispositivos pequeños */
         margin-left: 10px; /* Agregar margen izquierdo */
         margin-right: 10px; /* Agregar margen derecho */
     }
